@@ -1,0 +1,66 @@
+#!/bin/bash
+
+VERSION=5
+
+# make a temporary image with the user created inside
+TEMP_IMAGE="cloudtools-tmp:$(date +%Y-%m-%d-%H-%M-%S)"
+
+USER=$USER
+U=$(id -u)
+G=$(id -g)
+
+(
+    dir=$(mktemp -d "${TMPDIR:-/tmp}/cloudtools.XXXXXXXXX") && cd $dir
+    cat > Dockerfile <<EOF
+FROM reg.mtcloud.net:5000/cloudtools
+RUN addgroup --gid $G $USER || /bin/true
+RUN adduser --uid $U --gid $G $USER --gecos "" --disabled-password --home $HOME
+RUN echo "$USER   ALL=NOPASSWD: ALL" >> /etc/sudoers
+EOF
+    docker build -t $TEMP_IMAGE . &> /dev/null
+)
+
+show_warning() {
+    # Takes 2 arguments, highlighted text, regular text
+    # Prints to STDERR
+    # Doesn't display unless STDERR is attached to a terminal
+    C_YELLOW="\e[33m"
+    C_NORMAL="\e[0m"
+    if [ -t 1 ] ; then #stdout wired to terminal?
+        printf "${C_YELLOW}$1${C_NORMAL} $2\n" 1>&2
+    fi
+}
+
+OPTIONAL_DEV_MOUNTS=""
+
+if [ -n "${CT_DEV_NIMBI+1}" ]; then
+    # e.g. /home/nate/projects/nimbi/nimbi/
+    NIMBI_MOUNT="${CT_DEV_NIMBI}/nimbi:/code/nimbi/nimbi"
+    show_warning "Using local nimbi:" $NIMBI_MOUNT
+    OPTIONAL_DEV_MOUNTS="${OPTIONAL_DEV_MOUNTS} -v $NIMBI_MOUNT"
+fi
+if [ -n "${CT_DEV_TROPEASE+1}" ]; then
+    # e.g. /home/nate/projects/tropease/tropease
+    TROPEASE_MOUNT="${CT_DEV_TROPEASE}/tropease:/code/tropease/tropease"
+    show_warning "Using local tropease:" $TROPEASE_MOUNT
+    OPTIONAL_DEV_MOUNTS="${OPTIONAL_DEV_MOUNTS} -v $TROPEASE_MOUNT"
+fi
+if [ -n "${CT_DEV_ROLES+1}" ]; then
+    # e.g. /Users/jbarratt/work/mt/cm-customers/ansible/
+    ROLES_MOUNT="${CT_DEV_ROLES}/common/ansible/:/code/cm-customers/common/ansible"
+    show_warning "Using local roles:" $ROLES_MOUNT
+    OPTIONAL_DEV_MOUNTS="${OPTIONAL_DEV_MOUNTS} -v $ROLES_MOUNT"
+fi
+
+docker run --rm -it \
+    -v $HOME:$HOME -e HOME $OPTIONAL_DEV_MOUNTS \
+    -e DEV_MODE \
+    -e USER \
+    -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e AWS_SESSION_TOKEN \
+    -e AWS_DEFAULT_REGION -e AWS_DEFAULT_PROFILE -e AWS_CONFIG_FILE \
+    -v $(pwd):$(pwd) -w $(pwd) \
+    -u $U:$G \
+    $TEMP_IMAGE "$@"
+
+# clean up temporary image
+docker rmi $TEMP_IMAGE &> /dev/null

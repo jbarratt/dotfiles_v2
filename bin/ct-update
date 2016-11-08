@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -e
+
+docker pull reg.mtcloud.net:5000/cloudtools
+docker run --rm reg.mtcloud.net:5000/cloudtools cat /code/cloudtools > ~/bin/ct
+chmod 755 ~/bin/ct
