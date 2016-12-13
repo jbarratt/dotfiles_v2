@@ -1,0 +1,75 @@
+# Add `~/bin` to the `$PATH`
+
+export GOPATH=/Users/jbarratt/work/go
+export PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:$GOPATH/bin:$PATH:/usr/bin:/usr/sbin:/bin:/usr/local/opt/go/libexec/bin";
+
+# Load the shell dotfiles, and then some:
+# * ~/.path can be used to extend `$PATH`.
+# * ~/.extra can be used for other settings you don’t want to commit.
+for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
+	[ -r "$file" ] && [ -f "$file" ] && source "$file";
+done;
+unset file;
+
+# Case-insensitive globbing (used in pathname expansion)
+shopt -s nocaseglob;
+
+# Append to the Bash history file, rather than overwriting it
+shopt -s histappend;
+
+# Autocorrect typos in path names when using `cd`
+shopt -s cdspell;
+
+# Enable some Bash 4 features when possible:
+# * `autocd`, e.g. `**/qux` will enter `./foo/bar/baz/qux`
+# * Recursive globbing, e.g. `echo **/*.txt`
+for option in autocd globstar; do
+	shopt -s "$option" 2> /dev/null;
+done;
+
+# Add tab completion for many Bash commands
+if which brew > /dev/null && [ -f "$(brew --prefix)/etc/bash_completion" ]; then
+	source "$(brew --prefix)/etc/bash_completion";
+elif [ -f /etc/bash_completion ]; then
+	source /etc/bash_completion;
+fi;
+
+# Enable tab completion for `g` by marking it as an alias for `git`
+if type _git &> /dev/null && [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
+	complete -o default -o nospace -F _git g;
+fi;
+
+# Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
+[ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2 | tr ' ' '\n')" scp sftp ssh;
+
+# Add tab completion for `defaults read|write NSGlobalDomain`
+# You could just use `-g` instead, but I like being explicit
+complete -W "NSGlobalDomain" defaults;
+
+# Add `killall` tab completion for common apps
+complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;
+
+#eval "$(dvm env)"
+. ~/bin/z.sh
+alias pipr='pip install --no-deps --ignore-installed'
+alias dropboxgit='if [[ -e .git ]] ; then NAME=$(basename `pwd`) ; git init --bar ~/Dropbox/git/$NAME.git ; git remote add origin ~/Dropbox/git/$NAME.git ; git push -u origin master ; echo "Dropbox remote created" ; else ; echo "not currently in a git repo" ; fi'
+alias rpi_ip="arp -a | grep b8:27:eb | grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'"
+# alias key_rpi="ssh-copy-id pi@`rpi_ip`"
+alias ipn='ipython notebook'
+#source ~/perl5/perlbrew/etc/bashrc
+#export PERL5LIB=/Users/jbarratt/perl5/lib/perl5/darwin-thread-multi-2level/:/Users/jbarratt/perl5/:
+alias ave="ansible-vault edit --vault-password-file=~/.cm_ansible_vault"
+
+alias port-forward-minecraft="echo 'rdr pass inet proto tcp from any to any port 25565 -> 192.168.64.2 port 25565' | sudo pfctl -ef -"
+alias port-forward-disable="sudo pfctl -F all -f /etc/pf.conf"
+alias port-forward-list="sudo pfctl -s nat"
+alias git-delete-merged="git branch --no-color --merged | grep -v "\*" | grep -v master | grep -v svn | xargs -n 1 git branch -d"
+
+[ -f ~/.gpg-agent-info ] && source ~/.gpg-agent-info
+if [ -S "${GPG_AGENT_INFO%%:*}" ]; then
+    export GPG_AGENT_INFO
+else
+    eval $( gpg-agent --daemon --write-env-file ~/.gpg-agent-info )
+fi
+
+nimbigrep(){ pushd ~/work/mt/cm-customers && find . -name 'infra.py' -exec grep -H $1 '{}' ';' && popd ; }
