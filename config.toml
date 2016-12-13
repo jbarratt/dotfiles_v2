@@ -2,7 +2,9 @@
   links = [["bin"],
             [".bashrc", "dotfiles/bashrc"],
             [".bash_profile", "dotfiles/bash_profile"],
+            [".bash_aliases", "dotfiles/bash_aliases"],
             [".bash_prompt", "dotfiles/bash_prompt"],
+            [".bash_sensible", "dotfiles/sensible.bash"],
   ]
 
 [tasks.default]

@@ -104,8 +104,8 @@ else
 fi;
 
 # Optionally load in the role shell info
-if [[ "${ROLE_SHELL_INFO}" ]]; then
-    roleShell=" $ROLE_SHELL_INFO"
+if [[ "${AWSH_INFO}" ]]; then
+    roleShell=" $AWSH_INFO"
 else
     roleShell=""
 fi;
