@@ -8,3 +8,12 @@ Goals for this go-round:
 * Tool that can ship with the dotfiles and not have local dependencies
 
 This time I'm giving [homemaker](https://foosoft.net/projects/homemaker/) a shot.
+[Alterant](https://github.com/autonomy/alterant) looks interesting as well, especially the encryption capability, but the documentation seems offline.
+
+# How To
+
+    ./install.sh
+
+# Todo
+
+*

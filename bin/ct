@@ -14,7 +14,9 @@ G=$(id -g)
     cat > Dockerfile <<EOF
 FROM reg.mtcloud.net:5000/cloudtools
 RUN addgroup --gid $G $USER || /bin/true
-RUN adduser --uid $U --gid $G $USER --gecos "" --disabled-password --home $HOME
+# Adding a user with high UID causes problems: https://github.com/docker/docker/issues/5419
+# Fix is to use --no-log-init to prevent adding user to /var/log/lastlog
+RUN useradd --no-log-init -u $U -g $G $USER
 RUN echo "$USER   ALL=NOPASSWD: ALL" >> /etc/sudoers
 EOF
     docker build -t $TEMP_IMAGE . &> /dev/null
