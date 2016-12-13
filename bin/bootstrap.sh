@@ -18,6 +18,7 @@ if [ ! -d $DOTFILES ]; then
     git clone --quiet https://github.com/jbarratt/dotfiles_v2.git $DOTFILES
 
     echo "Installing dotfiles..."
+    cd $DOTFILES
     $DOTFILES/install.sh
 
     # bind -f ~/.inputrc
