@@ -2,7 +2,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'pangloss/vim-javascript'
-Plug 'bling/vim-airline'
+Plug 'bling/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
@@ -24,6 +24,7 @@ Plug 'elzr/vim-json'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'pearofducks/ansible-vim'
 Plug 'cespare/vim-toml'
+Plug 'muziqiushan/bufonly'
 call plug#end()
 
 set bg=dark
@@ -40,6 +41,27 @@ autocmd filetype taskpaper :WatchForChanges!
 
 let mapleader = ','
 let maplocalleader = ","
+
+" enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='base16_tomorrow'
+
+"""
+""" Visually indicate long columns
+""" Taken from https://www.youtube.com/watch?v=aHm36-na4-4
+"""
+highlight ColorColumn ctermbg=magenta
+call matchadd('ColorColumn', '\%81v', 100)
+
+" Better autocompletion for filenames, buffers, colors, etc.
+set wildmenu
+set wildmode=longest:full,full
+
+if has('nvim')
+  set ttimeout
+  set ttimeoutlen=0
+endif
+
 
 " for editing files next to the open one
 " http://vimcasts.org/episodes/the-edit-command/
