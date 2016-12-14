@@ -14,6 +14,18 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-vinegar'
 Plug 'fatih/vim-go'
+Plug 'klen/python-mode'
+Plug 'davidoc/taskpaper.vim'
+Plug 'vim-scripts/vim-auto-save'
+Plug 'djoshea/vim-autoread'
 call plug#end()
 
 colorscheme Tomorrow-Night
+
+nnoremap j gj
+nnoremap k gk
+set relativenumber
+set cursorline
+
+autocmd filetype taskpaper let ge:auto_save = 1
+autocmd filetype taskpaper :WatchForChanges!
