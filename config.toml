@@ -4,6 +4,7 @@
             [".bash_profile", "dotfiles/bash_profile"],
             [".bash_aliases", "dotfiles/bash_aliases"],
             [".bash_prompt", "dotfiles/bash_prompt"],
+            [".inputrc", "dotfiles/inputrc"],
             [".bash_sensible", "dotfiles/sensible.bash"],
 	    [".local/share/", "nvim/share"],
 	    [".config/nvim", "nvim/config"],

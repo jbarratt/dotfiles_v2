@@ -1,0 +1,20 @@
+# necessary to be able to remap C-w
+set bind-tty-special-chars Off
+
+# set vi mode
+set editing-mode vi
+set keymap vi
+
+$if mode=vi
+set keymap vi-command
+# these are only in command mode
+"yn":yank-nth-arg
+"yl":yank-last-arg
+set keymap vi-insert
+# these are only in insert mode
+"\C-l":clear-screen
+"\C-p":yank-last-arg
+"\C-w":backward-kill-word
+"\C-e":shell-expand-line
+"\C-x":history-expand-line
+$endif
