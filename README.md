@@ -13,6 +13,8 @@ This time I'm giving [homemaker](https://foosoft.net/projects/homemaker/) a shot
 # How To
 
     ./install.sh
+    holen source update
+    nvim +PlugInstall +qall
 
 # Todo
 

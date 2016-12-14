@@ -11,4 +11,9 @@
   ]
 
 [tasks.default]
-  deps = ["common"]
+  deps = ["common", "nvim"]
+
+[tasks.nvim]
+  accepts = [["which", "nvim"]]
+  cmds = [["nvim", "+PlugInstall", "+qall"]]
+  
