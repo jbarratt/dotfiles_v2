@@ -6,5 +6,7 @@ unset file;
 
 export GOPATH=$HOME/work/go
 export PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:$GOPATH/bin:$PATH:/usr/bin:/usr/sbin:/bin:/usr/local/opt/go/libexec/bin";
+export LSCOLORS=exfxcxdxbxegedabagacad
+export CLICOLOR=1
 
 . ~/bin/z.sh
