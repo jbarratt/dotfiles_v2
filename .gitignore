@@ -1,1 +1,4 @@
 .DS_Store
+nvim/share/nvim/plugged/
+nvim/share/nvim/shada/
+nvim/share/shada/
