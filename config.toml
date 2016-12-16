@@ -6,6 +6,7 @@
             [".bash_prompt", "bash/bash_prompt"],
             [".inputrc", "bash/inputrc"],
             [".bash_sensible", "bash/sensible.bash"],
+            [".bash_ssh", "bash/bash_ssh"],
             [".tmux.conf", "tmux/tmux.conf"],
             [".tmux.master", "tmux/tmux.master"],
             [".tmux.shared", "tmux/tmux.shared"],

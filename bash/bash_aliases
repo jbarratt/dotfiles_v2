@@ -10,4 +10,9 @@ alias port-forward-disable="sudo pfctl -F all -f /etc/pf.conf"
 alias port-forward-list="sudo pfctl -s nat"
 alias git-delete-merged="git branch --no-color --merged | grep -v "\*" | grep -v master | grep -v svn | xargs -n 1 git branch -d"
 
+if hash nvim 2>/dev/null; then
+	alias vi="nvim"
+	alias vim="nvim"
+fi
+
 nimbigrep(){ pushd ~/work/mt/cm-customers && find . -name 'infra.py' -exec grep -H $1 '{}' ';' && popd ; }

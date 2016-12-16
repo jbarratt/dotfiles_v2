@@ -59,7 +59,6 @@ set -s escape-time 0
 ## setting up status bar
 ## mostly horked from http://www.linuxized.com/2010/05/switching-from-gnu-screen-to-tmux/
 
-set-option -g status-utf8 on
 # set-option -g status-justify centre
 set-option -g status-justify left
 set-option -g status-bg colour16
