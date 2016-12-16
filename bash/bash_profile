@@ -5,6 +5,7 @@ unset file;
 
 
 export GOPATH=$HOME/work/go
+export EDITOR=vi
 export PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:$GOPATH/bin:$PATH:/usr/bin:/usr/sbin:/bin:/usr/local/opt/go/libexec/bin";
 
 
