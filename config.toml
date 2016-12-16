@@ -1,13 +1,15 @@
 [tasks.common]
   links = [["bin"],
-            [".bashrc", "dotfiles/bashrc"],
-            [".bash_profile", "dotfiles/bash_profile"],
-            [".bash_aliases", "dotfiles/bash_aliases"],
-            [".bash_prompt", "dotfiles/bash_prompt"],
-            [".inputrc", "dotfiles/inputrc"],
-            [".bash_sensible", "dotfiles/sensible.bash"],
-	    [".local/share/", "nvim/share"],
-	    [".config/nvim", "nvim/config"],
+            [".bashrc", "bash/bashrc"],
+            [".bash_profile", "bash/bash_profile"],
+            [".bash_aliases", "bash/bash_aliases"],
+            [".bash_prompt", "bash/bash_prompt"],
+            [".inputrc", "bash/inputrc"],
+            [".bash_sensible", "bash/sensible.bash"],
+            [".tmux.conf", "tmux/tmux.conf"],
+            [".tmux.master", "tmux/tmux.master"],
+            [".tmux.shared", "tmux/tmux.shared"],
+            [".tmux.uber", "tmux/tmux.uber"],
   ]
 
 [tasks.default]
@@ -16,4 +18,6 @@
 [tasks.nvim]
   accepts = [["which", "nvim"]]
   cmds = [["nvim", "+PlugInstall", "+qall"]]
+  links = [[".local/share/", "nvim/share"],
+	   [".config/nvim", "nvim/config"]]
   

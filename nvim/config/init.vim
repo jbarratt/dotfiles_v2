@@ -30,9 +30,13 @@ call plug#end()
 set bg=dark
 colorscheme Tomorrow-Night
 
+set nocp
+set ai to shell=/bin/bash terse nowarn sm ruler sw=4 ts=4
+set smartcase
 
 nnoremap j gj
 nnoremap k gk
+
 set relativenumber
 set cursorline
 
