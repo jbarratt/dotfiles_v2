@@ -63,5 +63,8 @@ Some useful features to keep in mind (I'm still memorizing them):
 
 # TODO
 
-* tmux
 * auto-update on login
+* fix vi to be nvim
+* add EDITOR
+* run ssh-agent
+* auto-run tmux
