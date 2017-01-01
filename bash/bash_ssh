@@ -1,5 +1,10 @@
 #!/bin/bash
 
+## only start an agent if we didn't get one forwarded from the outside
+if [[ -v SSH_AUTH_SOCK ]] ; then
+    return
+fi
+
 # Set up ssh-agent
 SSH_ENV="$HOME/.ssh/environment"
 
@@ -15,12 +20,9 @@ function start_agent {
 # Source SSH settings, if applicable
 if [ -f "${SSH_ENV}" ]; then
     . "${SSH_ENV}" > /dev/null
-    ## only start an agent if we didn't get one forwarded from the outside
-    if [[ ! -v SSH_AUTH_SOCK ]] ; then
-        kill -0 $SSH_AGENT_PID 2>/dev/null || {
-            start_agent
-        }
-    fi
+    kill -0 $SSH_AGENT_PID 2>/dev/null || {
+        start_agent
+    }
 else
     start_agent
 fi
