@@ -1,6 +1,7 @@
 .DS_Store
 nvim/share/nvim/plugged/
 nvim/share/nvim/shada/
+nvim/share/nvim/swap/
 nvim/share/shada/
 nvim/share/holen/
 nvim/config/.netrwhist
