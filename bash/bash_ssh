@@ -1,5 +1,10 @@
 #!/bin/bash
 
+## only start an agent if we didn't get one forwarded from the outside
+if [[ -v SSH_AUTH_SOCK ]] ; then
+    return
+fi
+
 # Set up ssh-agent
 SSH_ENV="$HOME/.ssh/environment"
 
