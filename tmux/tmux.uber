@@ -3,7 +3,7 @@
 source-file ~/.tmux.shared
 
 # turn off status bar
-set -g status off
+# set -g status off
 
 # change bind key to C-q
 set-option -g prefix C-q
