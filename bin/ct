@@ -58,8 +58,10 @@ docker run --rm -it \
     -v $HOME:$HOME -e HOME $OPTIONAL_DEV_MOUNTS \
     -e DEV_MODE \
     -e USER \
+    -e SSH_AUTH_SOCK \
     -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e AWS_SESSION_TOKEN \
     -e AWS_DEFAULT_REGION -e AWS_DEFAULT_PROFILE -e AWS_CONFIG_FILE \
+    -v /var/run/docker.sock:/var/run/docker.sock \
     -v $(pwd):$(pwd) -w $(pwd) \
     -u $U:$G \
     $TEMP_IMAGE "$@"
