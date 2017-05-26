@@ -25,6 +25,7 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'pearofducks/ansible-vim'
 Plug 'cespare/vim-toml'
 Plug 'muziqiushan/bufonly'
+Plug 'dhruvasagar/vim-table-mode'
 call plug#end()
 
 set bg=dark
@@ -84,6 +85,11 @@ let g:pymode_rope_complete_on_dot = 0
 au FileType go setlocal foldmethod=syntax
 " use goimports for formatting
 let g:go_fmt_command = "goimports"
+
+" configure vim-table-mode
+let g:table_mode_realign_map = '<Leader>tR'
+au FileType rst let g:table_mode_header_fillchar='='
+au FileType rst let g:table_mode_corner_corner='+'
 
 " no default input
 let g:ctrlp_default_input = 0
