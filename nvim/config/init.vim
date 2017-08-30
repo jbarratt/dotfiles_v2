@@ -53,9 +53,9 @@ let g:airline_theme='base16_tomorrow'
 """
 """ Visually indicate long columns
 """ Taken from https://www.youtube.com/watch?v=aHm36-na4-4
-"""
-highlight ColorColumn ctermbg=magenta
-call matchadd('ColorColumn', '\%81v', 100)
+""" TODO only for python maybe? Really annoying for markdown, etc
+" highlight ColorColumn ctermbg=magenta
+" call matchadd('ColorColumn', '\%81v', 100)
 
 " Better autocompletion for filenames, buffers, colors, etc.
 set wildmenu
