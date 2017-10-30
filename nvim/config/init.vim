@@ -41,6 +41,8 @@ set relativenumber
 set cursorline
 
 autocmd filetype taskpaper let g:auto_save = 1
+autocmd filetype taskpaper let g:auto_save_silent = 1
+autocmd filetype taskpaper let g:auto_save_in_insert_mode = 0
 autocmd filetype taskpaper :WatchForChanges!
 
 let mapleader = ','
