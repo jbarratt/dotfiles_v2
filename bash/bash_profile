@@ -6,6 +6,7 @@ unset file;
 
 export GOPATH=$HOME/work/go
 export EDITOR=vi
+export AWS_DEFAULT_REGION=$(curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | jq .region -r)
 export PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:$GOPATH/bin:$PATH:/usr/bin:/usr/sbin:/bin:/usr/local/opt/go/libexec/bin:/usr/local/go/bin";
 
 
