@@ -10,11 +10,23 @@ alias port-forward-disable="sudo pfctl -F all -f /etc/pf.conf"
 alias port-forward-list="sudo pfctl -s nat"
 alias git-delete-merged="git branch --no-color --merged | grep -v "\*" | grep -v master | grep -v svn | xargs -n 1 git branch -d"
 
-alias tmc='tmux new-session -sAD -s main'
-
 if hash nvim 2>/dev/null; then
 	alias vi="nvim"
 	alias vim="nvim"
 fi
 
-nimbigrep(){ pushd ~/work/mt/cm-customers && find . -name 'infra.py' -exec grep -H $1 '{}' ';' && popd ; }
+keymux() {
+	ssm_key="/sshkeys/github"
+	ssh-agent bash -o pipefail -c '
+		if aws ssm get-parameter \
+			--with-decryption --name "'$ssm_key'" \
+			--output text --query Parameter.Value |
+			ssh-add -
+		then
+			tmux "$@"
+		else
+			echo >&2 "ERROR: failed to get or add key"
+			exit 1
+		fi
+	' bash "$@"
+}
