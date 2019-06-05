@@ -41,7 +41,11 @@ loadagent() {
 	  if [ "$?" == 2 ]; then
 		(umask 066; ssh-agent > ~/.ssh-agent)
 		eval "$(<~/.ssh-agent)" >/dev/null
-		aws ssm get-parameter --with-decryption --name "/sshkeys/github" --output text --query Parameter.Value | ssh-add -t 3600 -
+		aws ssm get-parameter --with-decryption --name "/sshkeys/github" --output text --query Parameter.Value | ssh-add -
 	  fi
 	fi
+}
+
+addgithub() {
+	aws ssm get-parameter --with-decryption --name "/sshkeys/github" --output text --query Parameter.Value | ssh-add -
 }
