@@ -30,3 +30,18 @@ keymux() {
 		fi
 	' bash "$@"
 }
+
+loadagent() {
+	ssh-add -l &>/dev/null
+	if [ "$?" == 2 ]; then
+	  test -r ~/.ssh-agent && \
+		eval "$(<~/.ssh-agent)" >/dev/null
+
+	  ssh-add -l &>/dev/null
+	  if [ "$?" == 2 ]; then
+		(umask 066; ssh-agent > ~/.ssh-agent)
+		eval "$(<~/.ssh-agent)" >/dev/null
+		aws ssm get-parameter --with-decryption --name "/sshkeys/github" --output text --query Parameter.Value | ssh-add -t 3600 -
+	  fi
+	fi
+}
