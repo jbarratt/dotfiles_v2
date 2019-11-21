@@ -24,3 +24,4 @@ go get -u github.com/josharian/impl
 go get -u honnef.co/go/tools/cmd/keyify
 go get -u github.com/fatih/motion
 go get -u github.com/koron/iferr
+go get -u github.com/FooSoft/homemaker

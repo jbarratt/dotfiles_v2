@@ -1,0 +1,15 @@
+[tasks.common]
+  links = [
+            [".zshrc", "zsh/zshrc"],
+            [".zsh_plugins", "zsh/zsh_plugins"],
+  ]
+
+[tasks.default]
+  deps = ["common", "nvim"]
+
+[tasks.nvim]
+  accepts = [["which", "nvim"]]
+  cmds = [["nvim", "+PlugInstall", "+qall"]]
+  links = [[".local/share/", "nvim/share"],
+	   [".config/nvim", "nvim/config"]]
+  

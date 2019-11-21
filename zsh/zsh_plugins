@@ -1,0 +1,20 @@
+# Sorted in order of appearance (new at the bottom):
+robbyrussell/oh-my-zsh
+zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-completions
+mafredri/zsh-async
+belak/zsh-utils path:/editor
+belak/zsh-utils path:/history
+
+robbyrussell/oh-my-zsh path:plugins/osx
+robbyrussell/oh-my-zsh path:plugins/git
+robbyrussell/oh-my-zsh path:plugins/aws
+robbyrussell/oh-my-zsh path:plugins/docker
+robbyrussell/oh-my-zsh path:plugins/brew
+robbyrussell/oh-my-zsh path:plugins/z
+
+
+
+# Theme, should be the last:
+# sobolevn/sobole-zsh-theme
+sindresorhus/pure
