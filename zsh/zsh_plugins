@@ -13,6 +13,7 @@ robbyrussell/oh-my-zsh path:plugins/docker
 robbyrussell/oh-my-zsh path:plugins/brew
 robbyrussell/oh-my-zsh path:plugins/z
 
+DarrinTisdale/zsh-aliases-exa
 
 
 # Theme, should be the last:

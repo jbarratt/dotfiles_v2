@@ -2,6 +2,7 @@
   links = [
             [".zshrc", "zsh/zshrc"],
             [".zsh_plugins", "zsh/zsh_plugins"],
+            [".tmux.conf", "tmux/tmux.conf"],
   ]
 
 [tasks.default]
