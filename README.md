@@ -11,6 +11,15 @@ This time I'm giving [homemaker](https://foosoft.net/projects/homemaker/) a shot
 
 # How To
 
+## Managing brew files
+
+```
+    $ brew bundle # install everything in the Brewfile/upgrade if needed
+    $ brew bundle --force dump # overwrite the Brewfile with currently installed stuff
+    $ brew bundle cleanup # remove any formulae not currently installed
+    $ brew bundle check # let you know the status of everything
+```
+
 ## Quick Bootstrap Install
 
 Given a login to a new machine, just type:
