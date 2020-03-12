@@ -1,5 +1,15 @@
 #!/usr/bin/env python3
 
+"""
+Loosely based on https://bezdelev.com/hacking/aws-sns-to-telegram-bot/
+Needs a config file at ~/.telme.yaml which is
+
+token: <your bot token>
+uid: <the uid of your user>
+"""
+
+
+
 import os
 import sys
 import yaml
