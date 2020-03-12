@@ -15,4 +15,37 @@ if hash nvim 2>/dev/null; then
 	alias vim="nvim"
 fi
 
-nimbigrep(){ pushd ~/work/mt/cm-customers && find . -name 'infra.py' -exec grep -H $1 '{}' ';' && popd ; }
+keymux() {
+	ssm_key="/sshkeys/github"
+	ssh-agent bash -o pipefail -c '
+		if aws ssm get-parameter \
+			--with-decryption --name "'$ssm_key'" \
+			--output text --query Parameter.Value |
+			ssh-add -
+		then
+			tmux "$@"
+		else
+			echo >&2 "ERROR: failed to get or add key"
+			exit 1
+		fi
+	' bash "$@"
+}
+
+loadagent() {
+	ssh-add -l &>/dev/null
+	if [ "$?" == 2 ]; then
+	  test -r ~/.ssh-agent && \
+		eval "$(<~/.ssh-agent)" >/dev/null
+
+	  ssh-add -l &>/dev/null
+	  if [ "$?" == 2 ]; then
+		(umask 066; ssh-agent > ~/.ssh-agent)
+		eval "$(<~/.ssh-agent)" >/dev/null
+		aws ssm get-parameter --with-decryption --name "/sshkeys/github" --output text --query Parameter.Value | ssh-add -
+	  fi
+	fi
+}
+
+addgithub() {
+	aws ssm get-parameter --with-decryption --name "/sshkeys/github" --output text --query Parameter.Value | ssh-add -
+}
