@@ -42,3 +42,4 @@ set -o ignoreeof # disable exit with ctrl-d
 
 # Let rust fix any paths it needs to
 source $HOME/.cargo/env
+eval "$(zoxide init zsh)"
