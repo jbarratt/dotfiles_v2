@@ -26,10 +26,14 @@ Plug 'pearofducks/ansible-vim'
 Plug 'cespare/vim-toml'
 Plug 'muziqiushan/bufonly'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'fatih/molokai'
 call plug#end()
 
 set bg=dark
-colorscheme Tomorrow-Night
+" colorscheme Tomorrow-Night
+let g:rehash256=1
+let g:molokai_original=1
+colorscheme molokai
 
 set nocp
 set ai to shell=/bin/bash terse nowarn sm ruler sw=4 ts=4
@@ -84,9 +88,10 @@ let g:pymode_rope_complete_on_dot = 0
 
 " settings for go
 " fold go files with syntax
-au FileType go setlocal foldmethod=syntax
+" au FileType go setlocal foldmethod=syntax
 " use goimports for formatting
 let g:go_fmt_command = "goimports"
+let g:go_fold_enable = ['import']
 
 " no default input
 let g:ctrlp_default_input = 0
