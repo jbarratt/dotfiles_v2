@@ -23,7 +23,7 @@ compinit
 # environment settings
 #######################
 
-export PATH="$PATH:$HOME/work/go/bin:/Users/jbarratt/Library/Python/3.7/bin"
+export PATH="$PATH:$HOME/work/go/bin:$HOME/go/bin:/Users/jbarratt/Library/Python/3.7/bin"
 export EDITOR="nvim"
 export TERM="xterm-256color"
 ulimit -n 4096
