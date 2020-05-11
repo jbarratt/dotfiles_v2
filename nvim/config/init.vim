@@ -45,6 +45,9 @@ nnoremap k gk
 set relativenumber
 set cursorline
 
+" Make the netrw buffer go away: https://github.com/tpope/vim-vinegar/issues/13
+let g:netrw_fastbrowse = 0
+
 autocmd filetype taskpaper let g:auto_save = 1
 autocmd filetype taskpaper let g:auto_save_silent = 1
 autocmd filetype taskpaper let g:auto_save_in_insert_mode = 0
