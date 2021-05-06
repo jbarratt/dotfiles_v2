@@ -1,10 +1,23 @@
-# tell omz where it lives
-ANTIBODY_HOME="$(antibody home)"
-export ZSH="$ANTIBODY_HOME"/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh
-source $ZSH/oh-my-zsh.sh
+source /usr/local/share/antigen/antigen.zsh
 
-source <(antibody init)
-antibody bundle < ~/.zsh_plugins
+antigen use oh-my-zsh
+
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-completions
+antigen bundle mafredri/zsh-async
+antigen bundle belak/zsh-utils path:/editor
+antigen bundle belak/zsh-utils path:/history
+
+antigen bundle osx
+antigen bundle git
+antigen bundle aws
+antigen bundle docker
+antigen bundle brew
+antigen bundle pip
+antigen bundle command-not-found
+
+antigen apply
+
 
 
 #ZSH_THEME=
