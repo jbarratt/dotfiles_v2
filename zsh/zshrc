@@ -7,14 +7,15 @@ source <(antibody init)
 antibody bundle < ~/.zsh_plugins
 
 
-ZSH_THEME=
+#ZSH_THEME=
 
 
 # quit bugging me!
-DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="false"
 
-autoload -Uz compinit promptinit
-promptinit
+#autoload -Uz compinit promptinit
+autoload -Uz compinit
+#promptinit
 compinit
 #prompt agnoster
 #prompt pure
@@ -23,18 +24,15 @@ compinit
 # environment settings
 #######################
 
-export PATH="$PATH:$HOME/work/go/bin:/Users/jbarratt/Library/Python/3.9/bin"
+export PATH="$PATH:$HOME/work/go/bin:$HOME/go/bin"
 export EDITOR="nvim"
 export TERM="xterm-256color"
 ulimit -n 4096
 
-
-
 alias vim="nvim"
 alias vi="nvim"
-alias up="cd .."
-alias cdr="cd $(git rev-parse --show-toplevel)"
 alias code="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
+alias up="cd .."
 
 bindkey -e
 unsetopt beep                   # no bell on error
@@ -42,6 +40,5 @@ unsetopt list_beep              # no bell on ambiguous completion
 IGNOREEOF=10
 set -o ignoreeof # disable exit with ctrl-d
 
-# Let rust fix any paths it needs to
-source $HOME/.cargo/env
 eval "$(zoxide init zsh)"
+eval "$(starship init zsh)"
