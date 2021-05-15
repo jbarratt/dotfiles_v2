@@ -1,20 +1,34 @@
-# tell omz where it lives
-ANTIBODY_HOME="$(antibody home)"
-export ZSH="$ANTIBODY_HOME"/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh
-source $ZSH/oh-my-zsh.sh
+source /usr/local/share/antigen/antigen.zsh
 
-source <(antibody init)
-antibody bundle < ~/.zsh_plugins
+antigen use oh-my-zsh
+
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-completions
+antigen bundle mafredri/zsh-async
+antigen bundle belak/zsh-utils path:/editor
+antigen bundle belak/zsh-utils path:/history
+
+antigen bundle osx
+antigen bundle git
+antigen bundle aws
+antigen bundle docker
+antigen bundle brew
+antigen bundle pip
+antigen bundle command-not-found
+
+antigen apply
 
 
-ZSH_THEME=
+
+#ZSH_THEME=
 
 
 # quit bugging me!
-DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="false"
 
-autoload -Uz compinit promptinit
-promptinit
+#autoload -Uz compinit promptinit
+autoload -Uz compinit
+#promptinit
 compinit
 #prompt agnoster
 #prompt pure
@@ -23,15 +37,14 @@ compinit
 # environment settings
 #######################
 
-export PATH="$PATH:$HOME/work/go/bin:$HOME/go/bin:/Users/jbarratt/Library/Python/3.7/bin"
+export PATH="$PATH:$HOME/work/go/bin:$HOME/go/bin"
 export EDITOR="nvim"
 export TERM="xterm-256color"
 ulimit -n 4096
 
-
-
 alias vim="nvim"
 alias vi="nvim"
+alias code="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
 alias up="cd .."
 
 bindkey -e
@@ -40,6 +53,5 @@ unsetopt list_beep              # no bell on ambiguous completion
 IGNOREEOF=10
 set -o ignoreeof # disable exit with ctrl-d
 
-# Let rust fix any paths it needs to
-source $HOME/.cargo/env
 eval "$(zoxide init zsh)"
+eval "$(starship init zsh)"
