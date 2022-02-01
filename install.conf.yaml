@@ -4,6 +4,7 @@
 - clean: ['~']
 - link:
       ~/.zshrc: zsh/zshrc
+      ~/.zprofile: zsh/zprofile
       ~/.zsh_plugins: zsh/zsh_plugins
       ~/.config/nvim: config/nvim
       ~/.config/starship.toml: config/starship.toml
