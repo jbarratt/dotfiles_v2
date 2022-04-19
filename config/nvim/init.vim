@@ -1,5 +1,8 @@
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'tpope/vim-sensible'
+Plug 'dense-analysis/ale'
+Plug 'easymotion/vim-easymotion'
+Plug 'itchyny/lightline.vim'
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'pangloss/vim-javascript'
 Plug 'bling/vim-airline' | Plug 'vim-airline/vim-airline-themes'
@@ -11,7 +14,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-markdown'
+Plug 'plasticboy/vim-markdown'
 Plug 'tpope/vim-vinegar'
 Plug 'fatih/vim-go'
 Plug 'klen/python-mode'
@@ -44,14 +47,6 @@ nnoremap k gk
 
 set relativenumber
 set cursorline
-
-" Make the netrw buffer go away: https://github.com/tpope/vim-vinegar/issues/13
-let g:netrw_fastbrowse = 0
-
-autocmd filetype taskpaper let g:auto_save = 1
-autocmd filetype taskpaper let g:auto_save_silent = 1
-autocmd filetype taskpaper let g:auto_save_in_insert_mode = 0
-autocmd filetype taskpaper :WatchForChanges!
 
 let mapleader = ','
 let maplocalleader = ","
