@@ -1,9 +1,10 @@
 - defaults:
     link:
-        relink: true
-- clean: ['~']
+      relink: true
+- clean: ["~"]
 - link:
-      ~/.zshrc: zsh/zshrc
-      ~/.zsh_plugins: zsh/zsh_plugins
-      ~/.config/nvim: config/nvim
-      ~/.config/starship.toml: config/starship.toml
+    ~/.zshrc: zsh/zshrc
+    ~/.zsh_plugins: zsh/zsh_plugins
+    ~/.config/nvim: config/nvim-lua
+    ~/.config/kitty: config/kitty
+    ~/.config/starship.toml: config/starship.toml
