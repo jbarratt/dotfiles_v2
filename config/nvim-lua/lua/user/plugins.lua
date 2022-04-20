@@ -44,7 +44,7 @@ return packer.startup(function(use)
 	use("wbthomason/packer.nvim") -- Have packer manage itself
 	use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
 	use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
-	use("numToStr/Comment.nvim") -- Easily comment stuff
+	-- use("numToStr/Comment.nvim") -- Easily comment stuff
 	use("kyazdani42/nvim-web-devicons") -- dope icons
 	use("kyazdani42/nvim-tree.lua") -- fancier nerdtree
 	use("akinsho/bufferline.nvim") -- nice visual buffer line at the top
@@ -75,6 +75,7 @@ return packer.startup(function(use)
 	use("folke/tokyonight.nvim")
 	use("lunarvim/darkplus.nvim")
 	use("EdenEast/nightfox.nvim")
+	use("rebelot/kanagawa.nvim")
 
 	-- cmp plugins
 	use("hrsh7th/nvim-cmp") -- The completion plugin

@@ -1,6 +1,22 @@
 local configs = require("nvim-treesitter.configs")
 configs.setup({
-	ensure_installed = "maintained",
+	ensure_installed = {
+		"lua",
+		"bash",
+		"css",
+		"dot",
+		"go",
+		"gomod",
+		"hcl",
+		"html",
+		"java",
+		"javascript",
+		"json",
+		"make",
+		"markdown",
+		"python",
+		"typescript",
+	},
 	sync_install = false,
 	ignore_install = { "" }, -- list of parsers to skip if issues
 	highlight = {
