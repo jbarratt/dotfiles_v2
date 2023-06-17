@@ -92,8 +92,7 @@ return packer.startup(function(use)
 
 	-- lsp
 	use("neovim/nvim-lspconfig") -- enable lsp
-	use({ "williamboman/mason.nvim" })
-	use({ "williamboman/mason-lspconfig.nvim" })
+	use("williamboman/nvim-lsp-installer") -- simple to use language server installer
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
 
 	-- telescope
@@ -113,13 +112,6 @@ return packer.startup(function(use)
 
 	-- trouble
 	use("folke/trouble.nvim") -- tell you all about the trouble your code is causing
-
-	-- go
-	use("mfussenegger/nvim-dap")
-	use("rcarriga/nvim-dap-ui")
-	use("theHamsta/nvim-dap-virtual-text")
-	use("ray-x/guihua.lua")
-	use("ray-x/go.nvim")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

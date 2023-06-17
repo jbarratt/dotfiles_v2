@@ -33,6 +33,7 @@ local options = {
 	wrap = false, -- show lines as one long line
 	scrolloff = 8, -- minimum number of lines around the cursor visible
 	sidescrolloff = 8, -- same but vertical
+	terse = true,
 	sm = true,
 }
 
