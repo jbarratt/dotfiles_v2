@@ -7,6 +7,9 @@ format = '[\[$symbol $common_meaning$signal_name$maybe_int\]]($style) '
 map_symbol = true
 disabled = false
 
+[battery]
+disabled = true
+
 [nodejs]
 format = "via [🤖 $version](bold green) "
 
