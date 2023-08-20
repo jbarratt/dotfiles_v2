@@ -1,3 +1,4 @@
+export ANTIGEN_LOG=~/.antigen/debug.log
 source /opt/homebrew/share/antigen/antigen.zsh
 
 antigen use oh-my-zsh
@@ -37,7 +38,8 @@ compinit
 # environment settings
 #######################
 
-export PATH="$PATH:$HOME/work/go/bin:$HOME/go/bin"
+export GOPATH="$HOME/work/go"
+export PATH="$PATH:$GOPATH/bin:$HOME/go/bin"
 export EDITOR="nvim"
 export TERM="xterm-256color"
 ulimit -n 4096

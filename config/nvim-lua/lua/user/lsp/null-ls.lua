@@ -17,17 +17,21 @@ local diagnostics = null_ls.builtins.diagnostics
 
 -- autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
 null_ls.setup({
-	debug = false,
-	on_attach = function(client)
-		if client.resolved_capabilities.document_formatting then
-			vim.cmd([[
-	augroup LspFormatting
-		autocmd! * <buffer>
-		autocmd BufWritePre <buffer> lua conditional_formatting()
-	augroup END
-]])
-		end
-	end,
+-- https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Formatting-on-save
+	on_attach = function(client, bufnr)
+        if client.supports_method("textDocument/formatting") then
+            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                group = augroup,
+                buffer = bufnr,
+                callback = function()
+                    -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
+                    -- on later neovim version, you should use vim.lsp.buf.format({ async = false }) instead
+                    vim.lsp.buf.formatting_sync()
+                end,
+            })
+        end
+    end,
 	sources = {
 		formatting.prettierd,
 		formatting.stylua,
