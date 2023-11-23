@@ -6,5 +6,6 @@
     ~/.zshrc: zsh/zshrc
     ~/.zsh_plugins: zsh/zsh_plugins
     ~/.config/nvim: config/nvim-lua
+    ~/.config/zsh-abbr/user-abbreviations: zsh/user-abbreviations
     ~/.config/kitty: config/kitty
     ~/.config/starship.toml: config/starship.toml

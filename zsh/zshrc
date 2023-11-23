@@ -5,9 +5,10 @@ antigen use oh-my-zsh
 
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-completions
-antigen bundle mafredri/zsh-async
-antigen bundle belak/zsh-utils path:/editor
-antigen bundle belak/zsh-utils path:/history
+antigen bundle mafredri/zsh-async@main
+antigen bundle olets/zsh-abbr@main
+antigen bundle belak/zsh-utils@main path:/editor
+antigen bundle belak/zsh-utils@main path:/history
 
 antigen bundle macos
 antigen bundle git
