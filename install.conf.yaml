@@ -8,4 +8,5 @@
     ~/.config/nvim: config/nvim-lua
     ~/.config/zsh-abbr/user-abbreviations: zsh/user-abbreviations
     ~/.config/kitty: config/kitty
+    ~/.config/helix: config/helix
     ~/.config/starship.toml: config/starship.toml

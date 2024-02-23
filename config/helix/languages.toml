@@ -1,0 +1,23 @@
+[[language]]
+name = "python"
+language-servers = ["pyright"]
+formatter = { command = "black", args = ["-", "-q"] }
+auto-format = true
+
+[[language]]
+name = "markdown"
+auto-format = true
+formatter = { command = "dprint", args = ["fmt", "--stdin", "md"] }
+
+[[language]]
+name = "typescript"
+auto-format = true
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
+
+[[language]]
+name = "go"
+auto-format = true
+# go install golang.org/x/tools/cmd/goimports@latest
+formatter = { command = "goimports" }
+
+

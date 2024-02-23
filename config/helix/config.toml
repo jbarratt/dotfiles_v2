@@ -1,0 +1,17 @@
+theme = "base16_default_dark"
+
+[editor]
+bufferline = "multiple"
+
+[editor.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'"' = '"'
+'<' = '>'
+
+[editor.soft-wrap]
+enable = true
+
+[keys.normal]
+C-t = [":open Daily.md", ":write!", ":sh daily_note", ":reload", ":goto 5"]
