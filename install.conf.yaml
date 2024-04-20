@@ -3,6 +3,7 @@
       relink: true
 - clean: ["~"]
 - link:
+    ~/.fzf.zsh: fzf.zsh
     ~/.zshrc: zsh/zshrc
     ~/.zsh_plugins: zsh/zsh_plugins
     ~/.config/nvim: config/nvim-lua

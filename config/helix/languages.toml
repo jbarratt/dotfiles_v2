@@ -6,13 +6,29 @@ auto-format = true
 
 [[language]]
 name = "markdown"
-auto-format = true
-formatter = { command = "dprint", args = ["fmt", "--stdin", "md"] }
+language-servers = ["marksman", "mdpls"]
+
+[language-server.mdpls]
+# markdown, please https://github.com/euclio/mdpls
+command = "/Users/jbarratt/.cargo/bin/mdpls"
+config = { markdown.preview.auto = true }
+#auto-format = true
+#formatter = { command = "dprint", args = ["fmt", "--stdin", "md"] }
+
+[language-server.efm]
+command = "efm-langserver"
+
+[language-server.efm.config]
+documentFormatting = true
+languages = { typescript = [ { formatCommand ="prettier --ignore-path /tmp/fake --stdin-filepath ${INPUT}", formatStdin = true } ] }
 
 [[language]]
 name = "typescript"
 auto-format = true
-formatter = { command = "prettier", args = ["--parser", "typescript"] }
+language-servers = [
+  { name = "efm", only-features = [ "diagnostics", "format" ] },
+  { name = "typescript-language-server", except-features = [ "format" ] }
+]
 
 [[language]]
 name = "go"
@@ -20,4 +36,26 @@ auto-format = true
 # go install golang.org/x/tools/cmd/goimports@latest
 formatter = { command = "goimports" }
 
+[language-server.gopls]
+command = "gopls"
+args = ["-remote=auto"] # share the gopls instance if there is one
+
+[language-server.gopls.config]
+gofumpt = false
+#usePlaceholders = true
+completeUnimported = true
+staticcheck = true
+matcher = "fuzzy"
+diagnosticsDelay = "500ms"
+symbolMatcher = "fuzzy"
+# buildFlags = ["-tags", "integration"]
+analyses = { unusedparams = false, unreachable = true }
+
+[language-server.gopls.config.hints]
+#assignVariableTypes = true
+compositeLiteralFields = true
+constantValues = true
+#functionTypeParameters = true
+#parameterNames = true
+#rangeVariableTypes = true
 

@@ -5,11 +5,13 @@ antigen use oh-my-zsh
 
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-completions
-antigen bundle mafredri/zsh-async@main
-antigen bundle olets/zsh-abbr@main
-antigen bundle belak/zsh-utils@main path:/editor
-antigen bundle belak/zsh-utils@main path:/history
-
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle mafredri/zsh-async
+antigen bundle belak/zsh-utils path:/editor
+antigen bundle belak/zsh-utils path:/history
+antigen bundle dotenv
+antigen bundle golang
+antigen bundle kubectl
 antigen bundle macos
 antigen bundle git
 antigen bundle aws
@@ -56,5 +58,9 @@ unsetopt list_beep              # no bell on ambiguous completion
 IGNOREEOF=10
 set -o ignoreeof # disable exit with ctrl-d
 
+export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
