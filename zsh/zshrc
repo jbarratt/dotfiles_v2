@@ -42,7 +42,7 @@ compinit
 #######################
 
 export GOPATH="$HOME/work/go"
-export PATH="$PATH:$GOPATH/bin:$HOME/go/bin"
+export PATH="$PATH:$GOPATH/bin:$HOME/go/bin:/Users/jbarratt/.local/bin"
 export EDITOR="nvim"
 export TERM="xterm-256color"
 ulimit -n 4096
