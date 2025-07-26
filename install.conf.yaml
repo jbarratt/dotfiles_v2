@@ -11,3 +11,4 @@
     ~/.config/kitty: config/kitty
     ~/.config/helix: config/helix
     ~/.config/starship.toml: config/starship.toml
+    ~/.tmux.conf: tmux/tmux.conf
